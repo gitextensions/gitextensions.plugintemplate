@@ -48,11 +48,11 @@
   <!-- Pack as .nupkg with dependency on GitExtensions.Plugins -->
   <PropertyGroup>
     <NuspecFile>$(MSBuildThisFileDirectory)$(MSBuildProjectName).nuspec</NuspecFile>
-    <Authors>Maraf</Authors>
-    <Company>Neptuo</Company>
-    <Description>An example of GitExtensions plugin distributed as NuGet package.</Description>
+    <Authors>YOUR NAME HERE</Authors>
+    <Company>YOUR ORGANIZATION HERE</Company>
+    <Description>A template for Git Extensions plugins distributed as NuGet packages.</Description>
     <PackageProjectUrl>https://github.com/gitextensions/gitextensions.plugintemplate</PackageProjectUrl>
-    <PackageTags>Neptuo GitExtensions</PackageTags>
+    <PackageTags>GitExtensions</PackageTags>
   </PropertyGroup>
   <Target Name="SetPackageProperties" BeforeTargets="GenerateNuspec">
     <PropertyGroup>

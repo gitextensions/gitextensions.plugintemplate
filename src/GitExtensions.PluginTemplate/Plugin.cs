@@ -1,34 +1,48 @@
 ﻿using GitExtensions.PluginTemplate.Properties;
 using GitUIPluginInterfaces;
 using ResourceManager;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GitExtensions.PluginTemplate
 {
     /// <summary>
-    /// An empty Git Extensions plugin implementation.
+    /// A template for Git Extensions plugins.
     /// </summary>
     [Export(typeof(IGitPlugin))]
     public class Plugin : GitPluginBase
     {
         public Plugin()
         {
-            Name = "PluginTemplate";
-            Description = "Plugin Template";
+            SetNameAndDescription("Plugin Template");
             Icon = Resources.Icon;
         }
 
-        public override bool Execute(GitUIEventArgs e)
+        
+        /// <summary>
+        /// This method is called when the plugin is loaded (either when Git Extensions is opened or when repositories are switched).
+        /// </summary>
+        public override void Register(IGitUICommands gitUiCommands)
         {
-            MessageBox.Show(e.OwnerForm, "Hello from the Plugin Template.", "Git Extensions");
+            
+        }
+
+
+        /// <summary>
+        /// This method is called when the plugin is unloaded (either when Git Extensions is closed or when repositories are switched).
+        /// </summary>
+        public override void Unregister(IGitUICommands gitUiCommands)
+        {
+            
+        }
+
+
+        /// <summary>
+        /// This method is called from the Git Extensions "Plugins" menu.
+        /// </summary>
+        public override bool Execute(GitUIEventArgs gitUIEventArgs)
+        {
+            MessageBox.Show(gitUIEventArgs.OwnerForm, "Hello from the Plugin Template.", "Git Extensions");
             return true;
         }
     }
