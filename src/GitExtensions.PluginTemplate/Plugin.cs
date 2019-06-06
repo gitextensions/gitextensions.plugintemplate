@@ -14,13 +14,20 @@ namespace GitExtensions.PluginTemplate
     {
         public Plugin()
         {
+            /// <summary>
+            /// See: https://github.com/gitextensions/gitextensions.plugintemplate/wiki/GitPluginBase#protected-void-setnameanddescriptionstring-name
+            /// </summary>
             SetNameAndDescription("Plugin Template");
+
+            /// <summary>
+            /// See: https://github.com/gitextensions/gitextensions.plugintemplate/wiki/GitPluginBase#public-image-icon--get-protected-set-
+            /// </summary>
             Icon = Resources.Icon;
         }
 
-        
+
         /// <summary>
-        /// This method is called when the plugin is loaded (either when Git Extensions is opened or when repositories are switched).
+        /// See: https://github.com/gitextensions/gitextensions.plugintemplate/wiki/GitPluginBase#public-virtual-void-registerigituicommands-gituicommands
         /// </summary>
         public override void Register(IGitUICommands gitUiCommands)
         {
@@ -29,7 +36,7 @@ namespace GitExtensions.PluginTemplate
 
 
         /// <summary>
-        /// This method is called when the plugin is unloaded (either when Git Extensions is closed or when repositories are switched).
+        /// See: https://github.com/gitextensions/gitextensions.plugintemplate/wiki/GitPluginBase#public-virtual-void-unregisterigituicommands-gituicommands
         /// </summary>
         public override void Unregister(IGitUICommands gitUiCommands)
         {
@@ -38,7 +45,7 @@ namespace GitExtensions.PluginTemplate
 
 
         /// <summary>
-        /// This method is called from the Git Extensions "Plugins" menu.
+        /// See: https://github.com/gitextensions/gitextensions.plugintemplate/wiki/GitPluginBase#public-abstract-bool-executegituieventargs-args
         /// </summary>
         public override bool Execute(GitUIEventArgs gitUIEventArgs)
         {
