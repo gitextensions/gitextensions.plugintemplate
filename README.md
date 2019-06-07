@@ -10,7 +10,7 @@ The package is going to be published on [NuGet.org](https://www.nuget.org/packag
  
 ### Nuspec
  - Place all content under lib folder. Custom nested folders are supported and path is preserved.
- - Add dependency on "virtual" package GitExtensions.Plugins and target version `[3.0,3.1)` *.
+ - Add dependency on "virtual" package GitExtensions.Extensibility and target version `[3.0,3.1)` *.
  - Real package dependencies are not supported, so everything should be packed with the plugin.
  - Keep in mind that sharing common libraries can be cumbersome as these must match across all plugins and also Git Extensions itself. So my current recommendation is not to do so.
  
