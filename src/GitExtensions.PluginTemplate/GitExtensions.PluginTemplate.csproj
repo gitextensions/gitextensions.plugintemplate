@@ -45,7 +45,7 @@
     <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(GitExtensionsDebugPluginsPath)" />
   </Target>
 
-  <!-- Pack as .nupkg with dependency on GitExtensions.Plugins -->
+  <!-- Pack as .nupkg with dependency on GitExtensions.Extensibility -->
   <PropertyGroup>
     <NuspecFile>$(MSBuildThisFileDirectory)$(MSBuildProjectName).nuspec</NuspecFile>
     <Authors>Maraf</Authors>
