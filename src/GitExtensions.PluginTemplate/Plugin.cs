@@ -1,34 +1,55 @@
 ﻿using GitExtensions.PluginTemplate.Properties;
 using GitUIPluginInterfaces;
 using ResourceManager;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GitExtensions.PluginTemplate
 {
     /// <summary>
-    /// An empty Git Extensions plugin implementation.
+    /// A template for Git Extensions plugins.
     /// </summary>
     [Export(typeof(IGitPlugin))]
     public class Plugin : GitPluginBase
     {
         public Plugin()
         {
-            Name = "PluginTemplate";
-            Description = "Plugin Template";
+            /// <summary>
+            /// See: https://github.com/gitextensions/gitextensions.plugintemplate/wiki/GitPluginBase#protected-void-setnameanddescriptionstring-name
+            /// </summary>
+            SetNameAndDescription("Plugin Template");
+
+            /// <summary>
+            /// See: https://github.com/gitextensions/gitextensions.plugintemplate/wiki/GitPluginBase#public-image-icon--get-protected-set-
+            /// </summary>
             Icon = Resources.Icon;
         }
 
-        public override bool Execute(GitUIEventArgs e)
+
+        /// <summary>
+        /// See: https://github.com/gitextensions/gitextensions.plugintemplate/wiki/GitPluginBase#public-virtual-void-registerigituicommands-gituicommands
+        /// </summary>
+        public override void Register(IGitUICommands gitUiCommands)
         {
-            MessageBox.Show(e.OwnerForm, "Hello from the Plugin Template.", "Git Extensions");
+            
+        }
+
+
+        /// <summary>
+        /// See: https://github.com/gitextensions/gitextensions.plugintemplate/wiki/GitPluginBase#public-virtual-void-unregisterigituicommands-gituicommands
+        /// </summary>
+        public override void Unregister(IGitUICommands gitUiCommands)
+        {
+            
+        }
+
+
+        /// <summary>
+        /// See: https://github.com/gitextensions/gitextensions.plugintemplate/wiki/GitPluginBase#public-abstract-bool-executegituieventargs-args
+        /// </summary>
+        public override bool Execute(GitUIEventArgs gitUIEventArgs)
+        {
+            MessageBox.Show(gitUIEventArgs.OwnerForm, "Hello from the Plugin Template.", "Git Extensions");
             return true;
         }
     }
