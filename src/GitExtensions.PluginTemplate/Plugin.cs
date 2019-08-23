@@ -57,7 +57,7 @@ namespace GitExtensions.PluginTemplate
         public override bool Execute(GitUIEventArgs gitUIEventArgs)
         {
             MessageBox.Show(gitUIEventArgs.OwnerForm, "Hello from the Plugin Template.", "Git Extensions");
-            return true;
+            return false; //Must return true if the revision grid should be refreshed after the execution of the plugin. false, otherwise.
         }
     }
 }
