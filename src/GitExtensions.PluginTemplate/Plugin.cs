@@ -14,14 +14,10 @@ namespace GitExtensions.PluginTemplate
     {
         public Plugin()
         {
-            /// <summary>
-            /// See: https://github.com/gitextensions/gitextensions.plugintemplate/wiki/GitPluginBase#protected-void-setnameanddescriptionstring-name
-            /// </summary>
+            // See: https://github.com/gitextensions/gitextensions.plugintemplate/wiki/GitPluginBase#protected-void-setnameanddescriptionstring-name
             SetNameAndDescription("Plugin Template");
 
-            /// <summary>
-            /// See: https://github.com/gitextensions/gitextensions.plugintemplate/wiki/GitPluginBase#public-image-icon--get-protected-set-
-            /// </summary>
+            // See: https://github.com/gitextensions/gitextensions.plugintemplate/wiki/GitPluginBase#public-image-icon--get-protected-set-
             Icon = Resources.Icon;
         }
 
