@@ -19,6 +19,9 @@ namespace GitExtensions.PluginTemplate
 
             // See: https://github.com/gitextensions/gitextensions.plugintemplate/wiki/GitPluginBase#public-image-icon--get-protected-set-
             Icon = Resources.Icon;
+
+            // See: https://github.com/gitextensions/gitextensions.plugintemplate/wiki/GitPluginBase#protected-void-translate
+            Translate();
         }
 
 
