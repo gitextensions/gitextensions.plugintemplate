@@ -1,4 +1,5 @@
-﻿using GitExtensions.PluginTemplate.Properties;
+﻿using System.Collections.Generic;
+using GitExtensions.PluginTemplate.Properties;
 using GitUIPluginInterfaces;
 using ResourceManager;
 using System.ComponentModel.Composition;
@@ -42,6 +43,13 @@ namespace GitExtensions.PluginTemplate
             
         }
 
+        ///// <summary>
+        ///// See: https://github.com/gitextensions/gitextensions.plugintemplate/wiki/GitPluginBase#public-virtual-ienumerableisetting-getsettings
+        ///// </summary>
+        //public override IEnumerable<ISetting> GetSettings()
+        //{
+        //    // Uncomment and fill if your plugin have settings that the user could configure
+        //}
 
         /// <summary>
         /// See: https://github.com/gitextensions/gitextensions.plugintemplate/wiki/GitPluginBase#public-abstract-bool-executegituieventargs-args
