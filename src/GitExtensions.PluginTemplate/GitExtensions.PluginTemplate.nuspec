@@ -12,6 +12,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="bin/$configuration$/net461/GitExtensions.PluginTemplate.dll" target="/lib" />
+    <file src="$targetDir$$id$.dll" target="/lib" />
+    <file src="$targetDir$$id$.pdb" target="/lib" />
   </files>
 </package>
