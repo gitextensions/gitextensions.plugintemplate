@@ -1,0 +1,36 @@
+name: Build Git Extensions plugin
+
+
+on: [push] #At every git push
+
+# on:
+#   push:
+#     tags:  #When git push a tag with format `vX.Y.Z`
+#     - 'v\d.\d.\d'
+
+jobs:
+  build:
+
+    runs-on: [windows-latest]
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.2.108
+
+    - name: Setup MSBuild.exe
+      uses: warrenbuckley/Setup-MSBuild@v1
+
+    - name: Build & package with `msbuild`
+      run: |
+        msbuild -target:restore -property:Configuration=Release
+        msbuild -target:pack -property:Configuration=Release
+
+    # - name: Push to `Nuget.org` nuget feed
+    #   run: |
+    #     cd "src/GitExtensions.PluginTemplate/bin/Release"
+    #     # Set your nuget token in a `NUGET_PUSH_TOKEN` GitHub secrets. See https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets
+    #     dotnet nuget push *.nupkg -k ${{ secrets.NUGET_PUSH_TOKEN }} -s https://api.nuget.org/v3/index.json -n true
