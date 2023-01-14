@@ -25,6 +25,18 @@ _* This is just my own eperience. Git Extensions follow SemVer, but it's public 
  
  ### Plugin.cs
   - Nothing special, but ordinary Git Extensions plugin :-)
+  
+## Good practices
+
+Here are some advices that we learned over the time.
+
+### Always target single Git Extensions version
+
+Until Git Extensions provides a stable API for developing plugins, most of the plugins must use un stable API that may change in every Git Extensions version. So it is good to always target single version when defining a package reference on `GitExtensions.Extensibility`.
+
+### Follow semantic versioning
+
+Primarily when target Git Extensions version change. It gives you the options for possible patches of previous versions.
 
 ## Icons
 
