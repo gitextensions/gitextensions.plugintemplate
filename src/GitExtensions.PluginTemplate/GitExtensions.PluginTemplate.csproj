@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net461</TargetFramework>
+    <TargetFramework>net6.0-windows7.0</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
     <VersionPrefix>1.0.0</VersionPrefix>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
   </PropertyGroup>
@@ -18,12 +19,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GitExtensions.Extensibility" Version="0.1.1.40" />
+    <PackageReference Include="GitExtensions.Extensibility" Version="0.3.0.57" />
+    <PackageReference Include="Microsoft.VisualStudio.Composition" Version="17.4.16" />
+    <PackageReference Include="Microsoft.VisualStudio.threading" Version="17.5.22" />
   </ItemGroup>
 
   <!--SourceLink support: https://github.com/dotnet/sourcelink -->
   <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
     <!--<PackageReference Include="Microsoft.SourceLink.AzureRepos.Git" Version="1.0.0" PrivateAssets="All"/>-->
     <!--<PackageReference Include="Microsoft.SourceLink.AzureDevOpsServer.Git" Version="1.0.0" PrivateAssets="All"/>-->
     <!--<PackageReference Include="Microsoft.SourceLink.GitLab" Version="1.0.0" PrivateAssets="All"/>-->
