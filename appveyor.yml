@@ -5,30 +5,78 @@
 # version format
 version: 1.0.0.{build}
 
+# version suffix, if any (e.g. '-RC1', '-beta' otherwise '')
+environment:
+  version_suffix: ''
+  # Disable the .NET logo in the console output.
+  DOTNET_NOLOGO: true
+  # Disable the .NET first time experience to skip caching NuGet packages and speed up the build.
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+
 # Do not build on tags (GitHub and BitBucket)
 skip_tags: true
-
-# Maximum number of concurrent jobs for the project
-max_jobs: 1
 
 #---------------------------------#
 #    environment configuration    #
 #---------------------------------#
 
+nuget:
+  disable_publish_on_pr: true
+
 # Build worker image (VM template)
-image:
-- Visual Studio 2019
+image: Visual Studio 2022
+
+# enable patching of Directory.Build.props
+dotnet_csproj:
+  patch: true
+  file: '**\*.props'
+  version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}$(version_suffix)'
+  package_version: '{version}$(version_suffix)'
 
 #---------------------------------#
 #       build configuration       #
 #---------------------------------#
 
-# scripts to run before build
-before_build:
-- ps: nuget restore .\GitExtensions.PluginTemplate.sln
+install:
+- ps: |
+    # Install the required .NET SDK
+    Invoke-WebRequest "https://dot.net/v1/dotnet-install.ps1" -OutFile "./dotnet-install.ps1"
+    ./dotnet-install.ps1 -JSonFile ./global.json -InstallDir 'C:\Program Files\dotnet'
+    # Remove the script so it doesn't "pollute" the build
+    Remove-Item -Path .\dotnet-install.ps1
 
-build:
-  # enable MSBuild parallel builds
-  parallel: true
-  # MSBuild verbosity level
-  verbosity: minimal
+build_script:
+- ps: |
+    dotnet restore --verbosity q --nologo /bl:.\artifacts\logs\restore.binlog
+    if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode) }
+
+- ps: |
+    dotnet build -c Release --verbosity q --nologo /bl:.\artifacts\logs\build.binlog
+    if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode) }
+
+- ps: |
+    dotnet publish --configuration Release --verbosity q -bl:.\artifacts\logs\publish.binlog
+    if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode) }
+
+
+
+#---------------------------------#
+#      artifacts configuration    #
+#---------------------------------#
+
+artifacts:
+- path: '**\GitExtensions.PluginTemplate.*.nupkg'
+  name: NuGet
+
+deploy:
+- provider: NuGet
+  name: production
+  artifact: /GitExtensions.PluginTemplate.*\.nupkg/
+  api_key:
+    secure: 2apdS3bqaEv20ai12PU9uXaF6w/INNVLyvFV7EdGyK8Uxdwk6KAKDuJySbmi/4uO
+  skip_symbols: false
+  on:
+    appveyor_repo_tag: true
