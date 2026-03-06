@@ -5,7 +5,7 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
 	<ItemGroup>
-		<PackageVersion Include="GitExtensions.Extensibility" Version="1.0.0.118" />
+		<PackageVersion Include="GitExtensions.Extensibility" Version="1.0.0.129" />
 		<PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
 		<PackageVersion Include="System.ComponentModel.Composition" Version="6.0.0" />
 	</ItemGroup>

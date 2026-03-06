@@ -19,7 +19,9 @@
 	</PropertyGroup>
 
 	<!-- References to Git Extensions' DLLs -->
+	<!-- PackageReference triggers the MSBuild targets that download GE before build -->
 	<ItemGroup>
+		<PackageReference Include="GitExtensions.Extensibility" />
 		<Reference Include="GitExtensions.Extensibility">
 			<HintPath>$(GitExtensionsPath)\GitExtensions.Extensibility.dll</HintPath>
 		</Reference>
