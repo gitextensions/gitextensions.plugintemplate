@@ -8,14 +8,14 @@
     <projectUrl>$projectUrl$</projectUrl>
     <tags>$tags$</tags>
     <dependencies>
-			<group>
-				<dependency id="GitExtensions.Extensibility" version="[1.0.0, 1.1.0)" />
-			</group>
-			<!-- To fix Warning NU5128 Add a dependency group -->
-			<group targetFramework="net10.0-windows">
-				<dependency id="GitExtensions.Extensibility" version="[1.0.0, 1.1.0)" />
-			</group>
-		</dependencies>
+      <group>
+        <dependency id="GitExtensions.Extensibility" version="[1.0.0, 1.1.0)" />
+      </group>
+      <!-- To fix Warning NU5128 Add a dependency group -->
+      <group targetFramework="net10.0-windows">
+        <dependency id="GitExtensions.Extensibility" version="[1.0.0, 1.1.0)" />
+      </group>
+    </dependencies>
   </metadata>
   <files>
     <file src="$targetDir$$id$.dll" target="/lib" />
