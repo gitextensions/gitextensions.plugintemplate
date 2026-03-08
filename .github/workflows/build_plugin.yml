@@ -24,10 +24,8 @@ jobs:
     - name: Restore
       run: dotnet restore --verbosity q --nologo
 
-    - name: Build & package with `dotnet`
-      run: |
-        dotnet build -c Release --verbosity q --nologo
-        dotnet publish --configuration Release --verbosity q --nologo
+    - name: Publish with `dotnet`
+      run: dotnet publish --configuration Release --verbosity q --nologo
 
     # - name: Push to `Nuget.org` nuget feed
     #   run: |
