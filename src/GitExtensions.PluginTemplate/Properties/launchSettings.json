@@ -2,7 +2,8 @@
   "profiles": {
     "GitExtensions.PluginTemplate": {
       "commandName": "Executable",
-      "executablePath": "$(GitExtensionsExecutablePath)"
+      "executablePath": "$(GitExtensionsExecutablePath)",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
     }
   }
 }
