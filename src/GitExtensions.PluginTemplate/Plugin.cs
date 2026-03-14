@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using GitExtensions.PluginTemplate.Properties;
-using GitUIPluginInterfaces;
-using ResourceManager;
+﻿using GitExtensions.PluginTemplate.Properties;
+using GitExtensions.Extensibility.Git;
+using GitExtensions.Extensibility.Plugins;
 using System.ComponentModel.Composition;
 using System.Windows.Forms;
+using GitCommands;
 
 namespace GitExtensions.PluginTemplate
 {
@@ -11,7 +11,6 @@ namespace GitExtensions.PluginTemplate
     /// A template for Git Extensions plugins.
     /// Find more documentation here: https://github.com/gitextensions/gitextensions.plugintemplate/wiki/GitPluginBase
     /// </summary>
-    [Export(typeof(IGitPlugin))]
     public class Plugin : GitPluginBase
     {
         public Plugin()
@@ -23,7 +22,7 @@ namespace GitExtensions.PluginTemplate
             Icon = Resources.Icon;
 
             // Translate the plugin strings. Do not remove. Should be called in the constructor of the plugin.
-            Translate();
+            Translate(AppSettings.CurrentTranslation);
         }
 
 
